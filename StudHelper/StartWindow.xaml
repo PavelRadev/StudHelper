@@ -1,0 +1,91 @@
+﻿<Controls:MetroWindow x:Class="StudHelper.StartWindow"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local ="clr-namespace:StudHelper"
+                      
+        BorderThickness="0" 
+        GlowBrush="Black"
+        WindowTransitionsEnabled="False"
+        WindowStartupLocation="CenterScreen"
+        ShowTitleBar="False"              
+        Title="StartWindow" Height="500" Width="417" ResizeMode="NoResize" Background="#FF252525">
+    <Grid Margin="0,0,0,0">
+        <TabControl HorizontalAlignment="Left" Height="471" VerticalAlignment="Top" Width="411" Margin="0,0,0,0">
+            <TabItem Header="Настройки">
+                <Grid Margin="0,0,0,0">
+                    <Label Content="Строка подключения" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#7FFFFFFF" FontSize="11" Height="23"/>
+                    <PasswordBox x:Name="ConnectionStringTB" Controls:TextBoxHelper.ClearTextButton="True" HorizontalAlignment="Left" Height="23" Margin="133,10,0,0" VerticalAlignment="Top" Width="262" Foreground="#7FFFFFFF" Password="Server=6037f828-b1e7-4d80-81ae-a53600a98c60.sqlserver.sequelizer.com;Database=db6037f828b1e74d8081aea53600a98c60;User ID=jgmrkuenmqyodqub;Password=BejVapM45tnRSkEsVFyuakJsXiDGSixtyAC5ZgQhLHTeJAWsgNUJpBcqCY6ZTejU;" FontSize="11" MinHeight="23"/>
+                    <Label Content="Пользователи" HorizontalAlignment="Left" Margin="10,77,0,0" VerticalAlignment="Top" Foreground="#7FFFFFFF" FontSize="11" Height="23"/>
+                    <TextBox x:Name="Users_table_TB" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Height="23" Margin="133,77,0,0" TextWrapping="Wrap" Text="users" VerticalAlignment="Top" Width="262" Foreground="#7FFFFFFF" FontSize="11" MinHeight="23"/>
+                    <Label Content="Таблицы" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="10,40,0,0" VerticalAlignment="Top" Foreground="#7FFFFFFF" FontSize="18" Width="385" Height="32"/>
+
+                    <Label Content="События" HorizontalAlignment="Left" Margin="10,105,0,0" VerticalAlignment="Top" Foreground="#7FFFFFFF" FontSize="11" Height="23"/>
+                    <TextBox x:Name="events_table_TB" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Height="23" Margin="133,105,0,0" TextWrapping="Wrap" Text="Events" VerticalAlignment="Top" Width="262" Foreground="#7FFFFFFF" FontSize="11" MinHeight="23"/>
+
+                    <Label Content="Группы" HorizontalAlignment="Left" Margin="10,133,0,0" VerticalAlignment="Top" Foreground="#7FFFFFFF" FontSize="11" Height="23"/>
+                    <TextBox x:Name="Groups_table_TB" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Height="23" Margin="133,133,0,0" TextWrapping="Wrap" Text="Groups" VerticalAlignment="Top" Width="262" Foreground="#7FFFFFFF" FontSize="11" MinHeight="23"/>
+
+                    <Label Content="Курсы лекций" HorizontalAlignment="Left" Margin="10,161,0,0" VerticalAlignment="Top" Foreground="#7FFFFFFF" FontSize="11" Height="23"/>
+                    <TextBox x:Name="Courses_table_TB" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Height="23" Margin="133,161,0,0" TextWrapping="Wrap" Text="Courses" VerticalAlignment="Top" Width="262" Foreground="#7FFFFFFF" FontSize="11" MinHeight="23"/>
+
+                    <Label Content="Права доступа" HorizontalAlignment="Left" Margin="10,189,0,0" VerticalAlignment="Top" Foreground="#7FFFFFFF" FontSize="11" Height="23"/>
+                    <TextBox x:Name="rights_table_TB" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Height="23" Margin="133,189,0,0" TextWrapping="Wrap" Text="Rights" VerticalAlignment="Top" Width="262" Foreground="#7FFFFFFF" FontSize="11" MinHeight="23"/>
+
+                    <Label Content="Лекции" HorizontalAlignment="Left" Margin="10,217,0,0" VerticalAlignment="Top" Foreground="#7FFFFFFF" FontSize="11" Height="23"/>
+                    <TextBox x:Name="Lessons_table_TB" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Height="23" Margin="133,217,0,0" TextWrapping="Wrap" Text="lessons" VerticalAlignment="Top" Width="262" Foreground="#7FFFFFFF" FontSize="11" MinHeight="23"/>
+
+                    <Label Content="Пользователи курса" HorizontalAlignment="Left" Margin="10,245,0,0" VerticalAlignment="Top" Foreground="#7FFFFFFF" FontSize="11" Height="23"/>
+                    <TextBox x:Name="Lessons_users_table_TB" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Height="23" Margin="133,245,0,0" TextWrapping="Wrap" Text="course_users" VerticalAlignment="Top" Width="262" Foreground="#7FFFFFFF" FontSize="11" MinHeight="23"/>
+
+                    <Label Content="Словарь" HorizontalAlignment="Left" Margin="10,273,0,0" VerticalAlignment="Top" Foreground="#7FFFFFFF" FontSize="11" Height="23"/>
+                    <TextBox x:Name="Dictionary_table_TB" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Height="23" Margin="133,273,0,0" TextWrapping="Wrap" Text="Dictionary" VerticalAlignment="Top" Width="262" Foreground="#7FFFFFFF" FontSize="11" MinHeight="23"/>
+
+                    <Label Content="Избранное слов." HorizontalAlignment="Left" Margin="10,301,0,0" VerticalAlignment="Top" Foreground="#7FFFFFFF" FontSize="11" Height="23"/>
+                    <TextBox x:Name="dictionary_fav_table_TB" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Height="23" Margin="133,301,0,0" TextWrapping="Wrap" Text="Dictionary_fav" VerticalAlignment="Top" Width="262" Foreground="#7FFFFFFF" FontSize="11" MinHeight="23"/>
+
+                    <Button x:Name="CheckFields" Content="Проверка" HorizontalAlignment="Left" Margin="342,338,0,0" VerticalAlignment="Top" Width="53" Foreground="#7FFFFFFF" Click="CheckFields_Click" FontSize="8"/>
+                    <Button x:Name="SetGlobals" Content="Применить" HorizontalAlignment="Left" Margin="10,391,0,0" VerticalAlignment="Top" Width="385" Foreground="#7FFFFFFF" Click="SetGlobals_Click"/>
+                    <Button x:Name="DefaultGlobals" Content="Восстановить" HorizontalAlignment="Left" Margin="256,338,0,0" VerticalAlignment="Top" Width="81" Foreground="#7FFFFFFF" Click="DefaultGlobals_Click" FontSize="8"/>
+                    <Button x:Name="LoadSettings" Content="Загрузить настройки из файла" HorizontalAlignment="Left" Foreground="#7FFFFFFF" Margin="10,338,0,0" VerticalAlignment="Top" Width="241" FontSize="8" Click="LoadSettings_Click"/>
+                    <CheckBox x:Name="DefaultSettings" Content="Использовать по умолчанию" Foreground="#7FFFFFFF" HorizontalAlignment="Left" Margin="209,368,0,0" VerticalAlignment="Top" Width="186"/>
+                    <CheckBox x:Name="SaveInFile" Content="Сохранить открытый файл" Foreground="#7FFFFFFF" HorizontalAlignment="Left" Margin="10,368,0,0" VerticalAlignment="Top" Width="194"/>
+
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Вход" IsSelected="True">
+                <Grid>
+                    <Grid HorizontalAlignment="Center" Height="274" VerticalAlignment="Center" Width="381">
+                        <Label Content="Пароль" HorizontalAlignment="Left" Margin="10,82,0,0" VerticalAlignment="Top" Width="110" FontSize="14" Foreground="#7FFFFFFF"/>
+                        <Label Content="Имя пользователя" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Background="#00000000" FontSize="14" Foreground="#7FFFFFFF"/>
+                        <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="LoginTextBox" HorizontalAlignment="Left" Height="29" Margin="170,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" FontSize="14" TextChanged="LoginTextBox_TextChanged"/>
+                        <PasswordBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="PasswordTextBox" HorizontalAlignment="Left" Margin="170,82,0,0" VerticalAlignment="Top" Width="200" Height="29" FontSize="14" PasswordChanged="PasswordTextBox_PasswordChanged"/>
+                        <Button x:Name="LoginButton" Content="Вход" HorizontalAlignment="Center" Margin="10,234,0,0" VerticalAlignment="Top" Width="166" Height="30" Click="LoginButton_Click" IsDefault="True" Foreground="#7FFFFFFF"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Регистрация">
+                <Grid>
+                    <Grid x:Name="RegistrationGrid" HorizontalAlignment="Center" Height="390" VerticalAlignment="Center" Width="385" Margin="10,18">
+                        <Label x:Name="CodeLabel" Content="Введите код доступа" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14" Foreground="#7FFFFFFF"/>
+                        <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="RegAccessTb" HorizontalAlignment="Left" Height="28" Margin="172,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" FontSize="14" TextChanged="RegAccessTb_TextChanged"/>
+                        <Label Content="Ваше имя" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Width="123" FontSize="14" Foreground="#7FFFFFFF"/>
+                        <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="RegNameTb" HorizontalAlignment="Left" Height="28" Margin="172,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" FontSize="14"/>
+                        <Label Content="Группа" HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top" Width="123" FontSize="14" Foreground="#7FFFFFFF"/>
+                        <ComboBox x:Name="GroupCB" HorizontalAlignment="Left" Margin="172,114,0,0" VerticalAlignment="Top" Width="203" Height="28" FontSize="14" SelectionChanged="GroupCB_SelectionChanged"/>
+                        <Label Content="Учебное заведение" HorizontalAlignment="Left" Margin="10,160,0,0" VerticalAlignment="Top" FontSize="14" Foreground="#7FFFFFFF"/>
+                        <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="StTb" HorizontalAlignment="Left" Height="28" Margin="172,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" FontSize="14" IsReadOnly="True"/>
+                        <Label Content="Логин" HorizontalAlignment="Left" Margin="10,232,0,0" VerticalAlignment="Top" FontSize="14" Foreground="#7FFFFFFF"/>
+                        <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="RegLoginTb" HorizontalAlignment="Left" Height="28" Margin="172,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" FontSize="14" TextChanged="RegLoginTb_TextChanged"/>
+                        <Label Content="Пароль" HorizontalAlignment="Left" Margin="10,278,0,0" VerticalAlignment="Top" FontSize="14" Foreground="#7FFFFFFF"/>
+                        <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="RegPassTb" HorizontalAlignment="Left" Height="28" Margin="172,278,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" FontSize="14"/>
+                        <Button x:Name="CheckButton" Content="Проверка" HorizontalAlignment="Center" Margin="314,306,10,0" VerticalAlignment="Top" Width="61" FontSize="9" Click="CheckButton_Click" Foreground="#7FFFFFFF"/>
+                        <Button x:Name="RegistrationButton" Content="Регистрация" HorizontalAlignment="Center" Margin="0,348,0,0" VerticalAlignment="Top" Width="150" FontSize="11" Height="33" Click="RegistrationButton_Click" Foreground="#7FFFFFFF"/>
+                        <Button x:Name="RightsInfoButton" Content="Инфо" HorizontalAlignment="Left" Margin="337,38,0,0" VerticalAlignment="Top" Width="38" FontSize="9" Click="RightsInfoButton_Click" Foreground="#7FFFFFFF"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Controls:MetroWindow>

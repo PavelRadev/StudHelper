@@ -1,0 +1,282 @@
+﻿<Controls:MetroWindow xmlns:awe="http://schemas.awesomium.com/winfx"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"  x:Class="StudHelper.MainWindow"
+        
+        BorderThickness="0" 
+        GlowBrush="Black"
+        WindowTransitionsEnabled="True"
+        WindowStartupLocation="CenterScreen"
+        
+        Title="MainWindow" Height="560" Width="900" MinWidth="900" MinHeight="560" WindowState="Maximized" NonActiveBorderBrush="#FF252525" NonActiveGlowBrush="#FF252525" NonActiveWindowTitleBrush="#FF252525" WindowTitleBrush="#FF252525" Loaded="MetroWindow_Loaded" Closing="MetroWindow_Closing" >
+    <Controls:MetroWindow.Flyouts>
+        <Controls:FlyoutsControl>
+            <Controls:Flyout x:Name="UserMenu" Foreground="#7FFFFFFF" Theme="Dark" Position="Left" AnimateOpacity="True" AnimateOnPositionChange="True"   Header="Личный кабинет"  Background="#FF252525" Width="250" Visibility="Collapsed" ScrollViewer.HorizontalScrollBarVisibility="Auto" ClosingFinished="UserMenu_ClosingFinished">
+                <Grid HorizontalAlignment="Left" Margin="0,0,0,-1" VerticalAlignment="Top" Width="250">
+                    <Label Content="Ваш логин" Foreground="#7FFFFFFF" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="33" Width="230" FontSize="16" FontFamily="Calibri"/>
+                    <TextBox x:Name="CabLogin" Foreground="#7FFFFFFF" HorizontalAlignment="Left" Height="34" Margin="10,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" FontSize="16" IsReadOnly="True"/>
+                    <Label Content="Ваше имя" Foreground="#7FFFFFFF" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Height="33" Width="230" FontSize="16"/>
+                    <TextBox x:Name="CabName" Foreground="#7FFFFFFF" HorizontalAlignment="Left" Height="34" Margin="10,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" FontSize="16" IsReadOnly="True"/>
+                    <Label Content="Прогресс в изучении курса" Foreground="#7FFFFFFF" HorizontalAlignment="Left" Margin="30,330,0,0" VerticalAlignment="Top" Width="230" FontSize="16" FontFamily="Calibri"/>
+                    <Label x:Name="ProgressLabel" Foreground="#7FFFFFFF" Content="Label" HorizontalAlignment="Left" Margin="90,360,0,0" VerticalAlignment="Top" Height="40" Width="94" FontSize="16"/>
+                    <Label Content="Права аккаунта" Foreground="#7FFFFFFF" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Height="33" Width="230" FontSize="16"/>
+                    <TextBox x:Name="CabRights" Foreground="#7FFFFFFF" HorizontalAlignment="Left" Height="34" Margin="10,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" FontSize="16" IsReadOnly="True"/>
+                    <Label Content="Академ. группа" Foreground="#7FFFFFFF" HorizontalAlignment="Left" Margin="10,190,0,0" VerticalAlignment="Top" Height="33" Width="230" FontSize="16"/>
+                    <TextBox x:Name="CabGroup" Foreground="#7FFFFFFF" HorizontalAlignment="Left" Height="34" Margin="10,220,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" FontSize="16" IsReadOnly="True"/>
+                    <Label Content="Учебное заведение" Foreground="#7FFFFFFF" HorizontalAlignment="Left" Margin="10,250,0,0" VerticalAlignment="Top" Height="33" Width="230" FontSize="16"/>
+                    <TextBox x:Name="CabUniversity" Foreground="#7FFFFFFF" HorizontalAlignment="Left" Height="34" Margin="10,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" FontSize="16" IsReadOnly="True"/>
+                    <Button x:Name="ExitButton" Foreground="#7FFFFFFF" Content="Выйти" HorizontalAlignment="Left" Margin="0,390,0,0" VerticalAlignment="Top" Width="250" Height="35" Click="ExitButton_Click"/>
+                    <Button x:Name="ChangeUserButton" Foreground="#7FFFFFFF" Content="Сменить пользователя" HorizontalAlignment="Left" Margin="0,420,0,0" VerticalAlignment="Top" Width="250" Height="36" Click="ChangeUserButton_Click"/>
+                </Grid>
+            </Controls:Flyout>
+        </Controls:FlyoutsControl>
+    </Controls:MetroWindow.Flyouts>
+
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button x:Name="MeetingModeButton" Content="Начало" Click="MeetingModeButton_Click"  Background="#FF2B579A" Foreground="White"/>
+            <Button x:Name="ViewModeButton" Content="Просмотр" Click="ViewModeButton_Click"/>
+            <Button x:Name="CourseTablesModeButton" Content="Ред. курса" Click="CourseTablesModeButton_Click"/>
+            <Button x:Name="MainTablesModeButton" Content="Ред. базы" Click="MainTablesModeButton_Click"/>
+            <Button x:Name="DictionaryTablesModeButton" Content="Словарь" Click="DictionaryTablesModeButton_Click"/>
+            <Button x:Name="UpdateFieldsButton" Content="Обновить" Click="UpdateFieldsButton_Click"/>
+            <Button x:Name="RightsInfoButton" Content="?" Click="RightsInfoButton_Click"/>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+
+    <Grid>
+        <Grid x:Name="ViewGrid" Visibility="Collapsed">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF2F2F2" Offset="1"/>
+                    <GradientStop Color="#FFFCFCFC" Offset="0.187"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+
+            <Grid Margin="0,0,642,0" Background="#FF2F2F2F" Height="90" VerticalAlignment="Bottom">
+                <Button x:Name="CompilerBtn" Content="Запустить онлайн компилятор" HorizontalAlignment="Left" Margin="0,0,0,61" Width="250" Height="29" VerticalAlignment="Bottom" BorderBrush="#002F2F2F" FontSize="9" Background="#FF2F2F2F" Foreground="White" Click="CompilerBtn_Click"/>
+                <Button x:Name="ChangeCourse" Content="Сменить учебный курс" HorizontalAlignment="Left" Width="149" Height="39" VerticalAlignment="Bottom" Margin="0,0,0,22" FontSize="9" BorderBrush="#00000000" Background="#FF2F2F2F" Foreground="White" Click="ChangeCourse_Click"/>
+                <Button x:Name="HomePageButton" Content="На главную" HorizontalAlignment="Left" Margin="149,0,0,22" Width="101" Height="39" VerticalAlignment="Bottom" BorderBrush="#002F2F2F" FontSize="9" Background="#FF2F2F2F" Foreground="White" Click="HomePageButton_Click"/>
+            </Grid>
+            <Grid HorizontalAlignment="Left" Width="250" Background="White" Height="22" VerticalAlignment="Bottom">
+                <Label x:Name="statusBarLabel" Content="Строка состояния" HorizontalAlignment="Left" VerticalAlignment="Top" Width="250" FontFamily="Calibri" FontSize="10" Foreground="Black"/>
+            </Grid>
+            <Grid HorizontalAlignment="Left" Height="40" Margin="0,50,0,0" VerticalAlignment="Top" Width="250" Background="White">
+                <Controls:ToggleSwitch x:Name="FinTS" OnLabel="Пройдено" OffLabel="В процессе" ThumbIndicatorBrush="Black" Foreground="Black" OnSwitchBrush="#FF2B579A" Checked="FinTS_Checked" Unchecked="FinTS_Unchecked"/>
+            </Grid>
+
+            <Grid Background="Black" Height="50" VerticalAlignment="Top">
+                <Grid Background="#FF2B579A" Margin="250,0,0,0" HorizontalAlignment="Left" Width="210"/>
+                <Grid x:Name="CabGrid" Background="#FF444444" HorizontalAlignment="Right" Width="70"/>
+            </Grid>
+
+            <ListBox x:Name="lessList" HorizontalAlignment="Left" Width="250" Background="{x:Null}" Margin="0,90" Foreground="Black" BorderBrush="Black" SelectionChanged="lessList_SelectionChanged">
+                <ListBox.Resources>
+                    <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+                </ListBox.Resources>
+            </ListBox>
+            <Label x:Name="usernameBlock" Content="Вы вошли как" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="250" Foreground="#FFF0F0F0" FontFamily="Calibri" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" MouseEnter="usernameBlock_MouseEnter" MouseLeave="usernameBlock_MouseLeave" MouseDown="usernameBlock_MouseDown"/>
+            <awe:WebControl x:Name="MainBrowser" Margin="250,0,0,0" Foreground="Red"/>
+        </Grid>
+        <Grid x:Name="MeetingGrid" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="MeetNameLabel" Content="Здравствуйте, ..." Margin="0,185,0,236" HorizontalContentAlignment="Center" FontFamily="Calibri" FontSize="30" Foreground="#66FFFFFF"/>
+            <Label Content="для начала, выберите учебный курс" Margin="0,251,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="20" HorizontalContentAlignment="Center" Foreground="#66FFFFFF"/>
+            <ComboBox x:Name="CoursesCB" DisplayMemberPath="name" SelectedValuePath="id" ItemsSource="{Binding}" Height="26" VerticalAlignment="Bottom" Margin="85,0,85,80" HorizontalAlignment="Center" Width="540" SelectedIndex="0"/>
+            <Button x:Name="CourseChooseButton" Content="Выбрать и продолжить" HorizontalAlignment="Center" Margin="358,0,352,10" Width="182" Height="29" VerticalAlignment="Bottom" IsDefault="True" Click="CourseChooseButton_Click"/>
+        </Grid>
+
+        <Grid x:Name="CourseChangeGrid" Margin="250,0,0,0" Visibility="Collapsed">
+            <Grid Height="28" Margin="0,0,0,284" VerticalAlignment="Bottom" Background="#7FFFFFFF"/>
+
+            <DataGrid x:Name="UsersTable" Foreground="#7FFFFFFF" Margin="375,0,0,0" Height="284" VerticalAlignment="Bottom" CurrentCellChanged="UsersTable_CurrentCellChanged"/>
+            <DataGrid x:Name="CoursesTable" Foreground="#7FFFFFFF" Margin="0,0,0,312" CurrentCellChanged="CoursesTable_CurrentCellChanged"/>
+            <Grid HorizontalAlignment="Left" Width="267" Margin="0,245,0,0"/>
+            <GroupBox x:Name="AddGroup" Header="Добавление записи" Margin="0" Background="#00000000" BorderBrush="#7FFFFFFF" HorizontalAlignment="Left" Width="375" Height="284" VerticalAlignment="Bottom" Foreground="#7FFFFFFF">
+                <Grid>
+                    <Button x:Name="addBtn" Foreground="#7FFFFFFF" Content="Добавить" Height="36" VerticalAlignment="Bottom" Background="#00D5D5D5" HorizontalAlignment="Left" Width="87" Click="addBtn_Click"/>
+                    <RadioButton x:Name="UsersRadio" Foreground="#7FFFFFFF" Content="Таблица &quot;Пользователи&quot;" HorizontalAlignment="Right" Background="Transparent" GroupName="first" Height="18" VerticalAlignment="Bottom" Checked="UsersRadio_Checked"/>
+                    <RadioButton x:Name="LectionsRadio" Foreground="#7FFFFFFF" Content="Таблица &quot;Лекции&quot;" HorizontalAlignment="Right" Margin="0,0,0,18" Background="Transparent" Width="160" GroupName="first" Height="18" VerticalAlignment="Bottom" Checked="LectionsRadio_Checked"/>
+                    <Button x:Name="ClearBtn" Content="Очистить поля" Foreground="#7FFFFFFF" Margin="87,0,0,0" Background="#00000000" Height="36" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="111" Click="ClearBtn_Click"/>
+                    <Grid x:Name="AddStudentGrid"  Visibility="Hidden">
+                        <ComboBox x:Name="LoginTB" Foreground="#7FFFFFFF" Height="23" Margin="10,10,165,0" VerticalAlignment="Top"/>
+                        <Label x:Name="loginLabel" Foreground="#7FFFFFFF" Content="Логин" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="150" HorizontalContentAlignment="Center"/>
+                        <Label x:Name="LessonLabel" Foreground="#7FFFFFFF" Content="Текущий урок" HorizontalAlignment="Right" Margin="0,41,10,0" VerticalAlignment="Top" Width="150" HorizontalContentAlignment="Center"/>
+                        <Label x:Name="DateLabel" Foreground="#7FFFFFFF" Content="Дата последнего входа" HorizontalAlignment="Right" Margin="0,72,10,0" VerticalAlignment="Top" Width="150" HorizontalContentAlignment="Center"/>
+                        <ComboBox x:Name="LectionsCB" Foreground="#7FFFFFFF" Margin="10,41,165,0" VerticalAlignment="Top"/>
+                        <DatePicker x:Name="datePicker" Foreground="#7FFFFFFF" Margin="10,72,165,0" VerticalAlignment="Top"/>
+                    </Grid>
+                    <Grid x:Name="LessonAddBtn" Visibility="Hidden">
+                        <TextBox Controls:TextBoxHelper.ClearTextButton="True" Foreground="#7FFFFFFF" x:Name="TitleTB" Height="23" Margin="10,10,181,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                        <TextBox Controls:TextBoxHelper.ClearTextButton="True" Foreground="#7FFFFFFF" x:Name="editTB" Height="23" Margin="10,41,181,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                        <TextBox Controls:TextBoxHelper.ClearTextButton="True" Foreground="#7FFFFFFF" x:Name="readTB" Height="23" Margin="10,72,181,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                        <Label x:Name="TitleLabel" Content="Заголовок" Foreground="#7FFFFFFF" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="166" HorizontalContentAlignment="Center"/>
+                        <Label x:Name="editLabel" Content="Ссылка для редактирования" Foreground="#7FFFFFFF" HorizontalAlignment="Right" Margin="0,41,10,0" VerticalAlignment="Top" Width="166" HorizontalContentAlignment="Center"/>
+                        <Label x:Name="readLabel" Content="Ссылка для просмотра" Foreground="#7FFFFFFF" Margin="0,72,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="166" HorizontalContentAlignment="Center"/>
+                    </Grid>
+                </Grid>
+            </GroupBox>
+        </Grid>
+
+        <Grid x:Name="DatabaseEditGrid" Margin="250,0,0,0" Background="#FF252525" Visibility="Visible">
+            <TabControl TabStripPlacement="Left">
+                <TabItem x:Name="UsersTab" Header="Пользователи">
+                    <Grid>
+                        <DataGrid x:Name="UsersGrid" Margin="0,0,0,200" Foreground="#7FFFFFFF" CurrentCellChanged="UsersGrid_CurrentCellChanged"/>
+                        <GroupBox x:Name="UsersAdd" Header="Добавление" Margin="0" VerticalAlignment="Bottom" Height="200" Background="Transparent" BorderBrush="#7FFFFFFF" Foreground="#7FFFFFFF" Controls:GroupBoxHelper.HeaderForeground="#7FFFFFFF">
+                            <Grid Background="Transparent">
+                                <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="UsersName" Height="23" Margin="10,10,116,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                                <Label Content="Имя" Margin="0,10,0,0" HorizontalAlignment="Right" Width="116" Height="26" VerticalAlignment="Top" HorizontalContentAlignment="Center" Foreground="#7FFFFFFF"/>
+                                <ComboBox x:Name="UsersRights" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="160"/>
+                                <Label Content="Права" HorizontalAlignment="Left" Margin="175,41,0,0" VerticalAlignment="Top" Width="54" HorizontalContentAlignment="Center" Foreground="#7FFFFFFF"/>
+                                <DatePicker x:Name="UsersDate" Margin="234,41,116,0" VerticalAlignment="Top"/>
+                                <Label Content="Последний визит" Margin="0,41,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="111" Foreground="#7FFFFFFF"/>
+                                <ComboBox x:Name="UsersGroup" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="160"/>
+                                <Label Content="Группа" HorizontalAlignment="Left" Margin="175,72,0,0" VerticalAlignment="Top" Width="54" HorizontalContentAlignment="Center" Foreground="#7FFFFFFF"/>
+                                <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="Userslogin" Height="23" Margin="234,72,116,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                                <Label Content="Логин" Margin="0,72,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Width="111" Foreground="#7FFFFFFF"/>
+                                <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="UsersPass" Height="23" Margin="10,0,302,0" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
+                                <Label Content="Пароль" HorizontalAlignment="Right" Margin="0,0,218,0" VerticalAlignment="Bottom" Width="79" Foreground="#7FFFFFFF"/>
+                                <ComboBox x:Name="UsersCourse" Margin="10,104,10,0" VerticalAlignment="Top"/>
+                                <Button x:Name="AddUserBtn" Content="Добавить" HorizontalAlignment="Right" Margin="0,0,116,0" VerticalAlignment="Bottom" Width="122" Background="#00D5D5D5" Foreground="#7FFFFFFF" Click="AddUserBtn_Click"/>
+                                <Button x:Name="UsersClearBtn" Content="Очистить" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="116" Background="#00D5D5D5" Foreground="#7FFFFFFF" Click="UsersClearBtn_Click"/>
+
+                            </Grid>
+                        </GroupBox>
+                        <RadioButton x:Name="ViewRB" Content="Просмотр" HorizontalAlignment="Right" Margin="0,0,125,177" VerticalAlignment="Bottom" GroupName="UsersGroup" IsChecked="True" Foreground="#7FFFFFFF" Checked="ViewRB_Checked"/>
+                        <RadioButton x:Name="EditRB" Content="Редактирование" HorizontalAlignment="Right" Margin="0,0,6,177" VerticalAlignment="Bottom" GroupName="UsersGroup" IsChecked="True" Foreground="#7FFFFFFF" Checked="EditRB_Checked"/>
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="RightsTab" Header="Права">
+                    <Grid>
+                        <DataGrid x:Name="RightsGrid" Foreground="#7FFFFFFF" Margin="0,0,0,150" CurrentCellChanged="RightsGrid_CurrentCellChanged"/>
+                        <GroupBox Header="Добавление" Margin="0" Height="150" VerticalAlignment="Bottom" Background="Transparent" BorderBrush="#7FFFFFFF" Foreground="#7FFFFFFF" Controls:GroupBoxHelper.HeaderForeground="#7FFFFFFF">
+                            <Grid Background="Transparent">
+                                <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="RightsName" Height="23" Margin="10,10,101,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                                <Label Content="Название" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="86" HorizontalContentAlignment="Center" Foreground="#7FFFFFFF"/>
+                                <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="RightsPass" Height="23" Margin="10,41,101,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                                <Label Content="Пароль" HorizontalAlignment="Right" Margin="0,41,10,0" VerticalAlignment="Top" Width="86" HorizontalContentAlignment="Center" Foreground="#7FFFFFFF"/>
+                                <CheckBox x:Name="RightsSU" Content="SuperUser права" HorizontalAlignment="Left" Margin="10,0,0,10" Width="126" Height="29" VerticalAlignment="Bottom" Foreground="#7FFFFFFF"/>
+                                <Button x:Name="RightsClearBtn" Content="Очистить поля" HorizontalAlignment="Right" Margin="0,0,10,7" VerticalAlignment="Bottom" Width="137" Background="Transparent" Foreground="#7FFFFFFF" Click="RightsClearBtn_Click"/>
+                                <Button x:Name="RightsAdd" Content="Добавить" Margin="0,0,147,7" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="108" Background="Transparent" Foreground="#7FFFFFFF" Click="RightsAdd_Click"/>
+
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="GroupsTab" Header="Группы">
+                    <Grid>
+                        <DataGrid x:Name="GroupsGrid" Foreground="#7FFFFFFF" Margin="0,0,0,150" CurrentCellChanged="GroupsGrid_CurrentCellChanged"/>
+                        <GroupBox Header="Добавление" Margin="0" VerticalAlignment="Bottom" Height="150" Background="#00000000" BorderBrush="#7FFFFFFF" Foreground="#7FFFFFFF" Controls:GroupBoxHelper.HeaderForeground="#7FFFFFFF">
+                            <Grid Background="Transparent">
+                                <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="GroupName" Height="23" Margin="10,10,170,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                                <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="GroupInstitution" Height="23" Margin="10,41,170,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                                <Label Content="Группа" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="155" HorizontalContentAlignment="Center" Foreground="#7FFFFFFF"/>
+                                <Label Content="Учебное заведение" HorizontalAlignment="Right" Margin="0,36,10,0" VerticalAlignment="Top" Width="155" HorizontalContentAlignment="Center" Foreground="#7FFFFFFF"/>
+                                <Button x:Name="GroupsAdd" Content="Добавить" HorizontalAlignment="Left" Margin="10,73,0,0" VerticalAlignment="Top" Width="121" Background="Transparent" Foreground="#7FFFFFFF" Click="GroupsAdd_Click"/>
+                                <Button x:Name="GroupsClear" Content="Очистить поля" HorizontalAlignment="Left" Margin="131,73,0,0" VerticalAlignment="Top" Width="133" Background="Transparent" Foreground="#7FFFFFFF" Click="GroupsClear_Click"/>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="CoursesTab" Header="Учебные курсы">
+                    <Grid>
+                        <DataGrid x:Name="CourcesGrid" Foreground="#7FFFFFFF" Margin="0,0,0,200" CurrentCellChanged="CourcesGrid_CurrentCellChanged"/>
+                        <GroupBox Header="Добавление" Margin="0" Background="#00000000" BorderBrush="#7FFFFFFF" Height="200" VerticalAlignment="Bottom" Foreground="#7FFFFFFF" Controls:GroupBoxHelper.HeaderForeground="#7FFFFFFF">
+                            <Grid Background="Transparent">
+                                <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="CoursesName" Height="23" Margin="10,10,150,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                                <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="AdminCoursesTable" Height="23" Margin="10,41,150,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                                <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="CoursesUsers" Height="23" Margin="10,72,150,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                                <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="CoursesCompiler" Height="23" Margin="10,103,150,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                                <Label Content="Название" HorizontalAlignment="Right" Margin="0,10,0,0" VerticalAlignment="Top" Width="145" HorizontalContentAlignment="Center" Foreground="#7FFFFFFF"/>
+                                <Label Content="Таблица с лекциями" HorizontalAlignment="Right" Margin="0,41,0,0" VerticalAlignment="Top" Width="145" HorizontalContentAlignment="Center" Foreground="#7FFFFFFF"/>
+                                <Label Content="Таблица пользователей" HorizontalAlignment="Right" Margin="0,72,0,0" VerticalAlignment="Top" Width="145" HorizontalContentAlignment="Center" Foreground="#7FFFFFFF"/>
+                                <Label Content="Компилятор" HorizontalAlignment="Right" Margin="0,103,0,0" VerticalAlignment="Top" Width="145" HorizontalContentAlignment="Center" Foreground="#7FFFFFFF"/>
+                                <Button x:Name="CoursesAdd" Content="Добавить" HorizontalAlignment="Left" Margin="10,0,0,3" VerticalAlignment="Bottom" Width="132" Background="Transparent" Foreground="#7FFFFFFF" Click="CoursesAdd_Click"/>
+                                <Button x:Name="CoursesClear" Content="Очистить поля" HorizontalAlignment="Left" Margin="142,0,0,3" VerticalAlignment="Bottom" Width="180" Background="Transparent" Foreground="#7FFFFFFF" Click="CoursesClear_Click"/>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="События" x:Name="EventsTab" IsEnabledChanged="EventsTab_IsEnabledChanged">
+                    <Grid>
+                        <DataGrid x:Name="EventsGrid" Foreground="#7FFFFFFF" IsReadOnly="True"/>
+
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Словарь" x:Name="DictionaryTab">
+                    <Grid>
+                        <DataGrid x:Name="DictionaryDataGrid" Foreground="#7FFFFFFF" Margin="0,0,0,285" CurrentCellChanged="DictionaryDataGrid_CurrentCellChanged"/>
+                        <GroupBox Header="Добавление" Margin="0" Background="#00000000" BorderBrush="#7FFFFFFF" Height="285" VerticalAlignment="Bottom" Foreground="#7FFFFFFF" Controls:GroupBoxHelper.HeaderForeground="#7FFFFFFF">
+                            <Grid Background="Transparent">
+                                <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="DictionaryDefinition" Height="23" Margin="10,10,121,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                                <Label Content="Термин" HorizontalAlignment="Right" Margin="0,10,0,0" VerticalAlignment="Top" Width="116" HorizontalContentAlignment="Center" Foreground="#7FFFFFFF"/>
+                                <Label Content="Определение" HorizontalAlignment="Right" Margin="0,41,0,0" VerticalAlignment="Top" Width="116" HorizontalContentAlignment="Center" Foreground="#7FFFFFFF"/>
+                                <Button x:Name="DictionaryAdd" Content="Добавить" Margin="10,0,214,3" VerticalAlignment="Bottom" Background="Transparent" Foreground="#7FFFFFFF" Click="DictionaryAdd_Click"/>
+                                <Button x:Name="DictionaryClear" Content="Очистить поля" Margin="0,0,10,3" VerticalAlignment="Bottom" Background="Transparent" Foreground="#7FFFFFFF" HorizontalAlignment="Right" Width="199"/>
+                                <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="DescriptionTB" Margin="10,41,121,74" TextWrapping="Wrap"/>
+                                <ComboBox x:Name="DictionaryCourse" Margin="10,0,121,43" VerticalAlignment="Bottom"/>
+                                <Label Content="Учебный курс" HorizontalAlignment="Right" Margin="0,177,10,0" VerticalAlignment="Top" Foreground="#7FFFFFFF" Width="106" HorizontalContentAlignment="Center"/>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Sql запросы" x:Name="SqlTab">
+                    <Grid>
+                        <TextBox x:Name="SqlTB" Margin="10,10,10,0" Foreground="#7FFFFFFF" TextWrapping="Wrap" FontSize="16" Height="240" VerticalAlignment="Top"/>
+                        <Button x:Name="SqlBtn" Content="Выполнить" Margin="10,255,10,0" Background="Transparent" Height="29" VerticalAlignment="Top" Foreground="#7FFFFFFF" Click="SqlBtn_Click"/>
+                        <ScrollViewer Margin="10,284,10,0" Focusable="False" FontSize="16" Foreground="#7FFFFFFF">
+                            <Grid>
+                                <TextBlock x:Name="StatusLabel" TextWrapping="WrapWithOverflow" VerticalAlignment="Top"  Focusable="False" Margin="0,0,15,0" FontSize="12"/>
+                            </Grid>
+                        </ScrollViewer>
+
+                    </Grid>
+                </TabItem>
+            </TabControl>
+            <GroupBox Header="" HorizontalAlignment="Left" Margin="0" Width="204" Background="#00000000" BorderBrush="#00000000" Foreground="#7FFFFFFF" Controls:GroupBoxHelper.HeaderForeground="#7FFFFFFF" Height="175" VerticalAlignment="Bottom">
+                <Grid Margin="0,0,0,-7">
+                    <Label Content="ID" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top" Width="172" HorizontalContentAlignment="Center" Foreground="#7FFFFFFF"/>
+                    <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="IdSearchTB" HorizontalAlignment="Left" Height="23" Margin="10,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172"/>
+                    <Label Content="Name" HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top" Width="172" HorizontalContentAlignment="Center" Foreground="#7FFFFFFF"/>
+                    <TextBox x:Name="NameSearchTB" Controls:TextBoxHelper.ClearTextButton="True" HorizontalAlignment="Left" Height="23" Margin="10,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172"/>
+                    <Button x:Name="SearchBtn" Content="Поиск" HorizontalAlignment="Left" Margin="10,106,0,0" VerticalAlignment="Top" Width="172" Height="31" Background="Transparent" Foreground="#7FFFFFFF" Click="SearchBtn_Click"/>
+                </Grid>
+            </GroupBox>
+        </Grid>
+        <Grid x:Name="DictionaryGrid" Margin="250,0,0,0" Background="#FF252525" Visibility="Collapsed">
+            <ListBox x:Name="DictionaryMainList" HorizontalAlignment="Left" Width="200" Margin="0,58,0,0" SelectionChanged="DictionaryMainList_SelectionChanged" Background="#00000000"/>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Все термины текущего курса" VerticalAlignment="Top" Foreground="White" FontSize="15" Margin="0,37,0,0" Width="200" Background="#00000000" Height="21"/>
+            <ScrollViewer x:Name="DescriptionScroll" Margin="200,63,0,0" Height="188" VerticalAlignment="Top" Background="#00000000">
+                <TextBlock x:Name="DescriptionMain" Text="Выберите термин из списка" Foreground="#7FFFFFFF" FontSize="20" Background="#00000000" TextWrapping="WrapWithOverflow">
+                    <TextBlock.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem x:Name="DescriptionCopyToBuffer" Header="Копировать в буфер" Click="DescriptionCopyToBuffer_Click"/>
+                        </ContextMenu>
+                    </TextBlock.ContextMenu>
+                </TextBlock>
+            </ScrollViewer>
+            <ListBox x:Name="DictionaryFavList" Margin="200,288,0,0" HorizontalAlignment="Left" Width="207" SelectionChanged="DictionaryFavList_SelectionChanged" Background="#00000000" BorderBrush="White"/>
+            <Label Content="Избранные термины" Margin="200,251,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" Foreground="White" FontSize="20" HorizontalAlignment="Left" Width="207" Background="#00000000"/>
+            <Grid Margin="407,251,0,0" Background="#00000000">
+                <Button x:Name="SaveToFav" Content="Сохранить в избранное" Margin="5,0,10,0" Foreground="#7FFFFFFF" Background="#7F2F2F2F" Height="22" Click="SaveToFav_Click" VerticalAlignment="Top"/>
+                <ScrollViewer Margin="0,30,0,40" Background="#00000000" BorderBrush="White">
+                    <TextBlock x:Name="DescriptionFav" TextWrapping="Wrap" Text="Выберите термин из списка избранных" Foreground="#7FFFFFFF" FontSize="16">
+                        <TextBlock.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem x:Name="DescriptionFavCopyToBuffer" Header="Копировать в буфер" Click="DescriptionFavCopyToBuffer_Click"/>
+                            </ContextMenu>
+                        </TextBlock.ContextMenu>
+                    </TextBlock>
+                </ScrollViewer>
+                <Button x:Name="DeleteFromFav" Content="удалить из избранного" Margin="5,0,10,10" Foreground="#7FFFFFFF" Background="#7F2F2F2F" Height="25" VerticalAlignment="Bottom" Click="DeleteFromFav_Click"/>
+            </Grid>
+            <Label Content="Словарь терминологии" Margin="200,0,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" FontSize="40" Background="#00000000" Foreground="White"/>
+
+        </Grid>
+    </Grid>
+</Controls:MetroWindow>
