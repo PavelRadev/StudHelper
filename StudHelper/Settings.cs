@@ -90,7 +90,7 @@ namespace StudHelper
             }
             catch (Exception ex)
             {
-                mw.ShowMessageAsync("Ошибка", ex.ToString());
+                mw.ShowMessageAsync("Ошибка ", ex.ToString());
             }
         }
     }

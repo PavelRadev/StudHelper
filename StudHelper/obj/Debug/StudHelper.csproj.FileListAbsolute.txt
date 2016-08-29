@@ -34,3 +34,6 @@ D:\C#\StudHelper\StudHelper\bin\Debug\awesomium_process
 D:\C#\StudHelper\StudHelper\bin\Debug\inspector.pak
 D:\C#\StudHelper\StudHelper\bin\Debug\xinput9_1_0.dll
 D:\C#\StudHelper\StudHelper\bin\Debug\pdf_js.pak
+D:\Колледж\C#\StudHelper\StudHelper\bin\Debug\StudHelper.exe.config
+D:\Колледж\C#\StudHelper\StudHelper\obj\Debug\StudHelper.exe
+D:\Колледж\C#\StudHelper\StudHelper\obj\Debug\StudHelper.pdb
